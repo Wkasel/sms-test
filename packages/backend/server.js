@@ -4,15 +4,27 @@ const utils = require("@sms-test/common");
 const schema = {
   typeDefs: gql`
     type Query {
-      hello: String!
+      phonenumber: String!
+    }
+    type Phone {
+      phonenumber: String!
+    }
+    type Mutation {
+      savePhoneNumber(phonenumber: String!): Phone
     }
     schema {
       query: Query
+      mutation: Mutation
     }
   `,
   resolvers: {
     Query: {
-      hello: () => "world"
+      phonenumber: (obj, args, ctx) => ({ obj, args, ctx })
+    },
+    Mutation: {
+      savePhoneNumber(obj, { phonenumber }) {
+        return { status: "success", phonenumber };
+      }
     }
   }
 };

@@ -1,11 +1,12 @@
 import { red } from "@material-ui/core/colors";
 import { createMuiTheme } from "@material-ui/core/styles";
+// import mapBG from "./img/map-bg.jpg";
 
 // A custom theme for this app
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#556cd6"
+      main: "rgb(67, 82, 247)"
     },
     secondary: {
       main: "#19857b"
@@ -13,9 +14,7 @@ const theme = createMuiTheme({
     error: {
       main: red.A400
     },
-    background: {
-      default: "#fff"
-    }
+    overrides: {}
   }
 });
 

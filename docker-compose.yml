@@ -1,47 +1,32 @@
 version: "3"
 
 services:
-  wf-api:
-    build:
-      context: ./packages/api-server
-      dockerfile: Dockerfile
-    container_name: wf-api
+  sms-backend:
+    image: node:12
+    container_name: sms-backend
     expose:
       - "4000"
     ports:
       - "4000:4000"
     user: node
-    env_file: ./packages/api-server/.env
     volumes:
-      - ./packages/api-server:/home/node/app
+      - ./packages/backend:/home/node/app
   wf-client:
     image: node:12
-    container_name: wf-client
+    container_name: sms-frontend
     expose:
       - "3000"
     ports:
       - "3000:3000"
     volumes:
-      - ./packages/www:/home/node/app
-      - ./packages/eslint-config-whyfabric:/home/node/app/eslint-config-whyfabric
-    working_dir: /home/node/app
-    command: bash -c 'yarn && yarn dev'
-  # wf-services:
-  #   image: node:12
-  #   container_name: wf-services
-  #   expose:
-  #     - "5000"
+      - ./packages/frontend:/home/node/app
+    # working_dir: /home/node/app
+    command: bash -c 'yarn && yarn start'
+  # wf-nginx:
+  #   container_name: sms-nginx
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./nginx
   #   ports:
-  #     - 5000:5000
-  #   command: bash -c 'yarn && yarn start'
-  #   volumes:
-  #     - ./packages/services:/home/node/app
-  #     - ./packages/eslint-config-whyfabric:/home/node/app/eslint-config-whyfabric
-  wf-nginx:
-    container_name: wf-nginx
-    restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
-    ports:
-      - "3050:80"
+  #     - "3050:80"

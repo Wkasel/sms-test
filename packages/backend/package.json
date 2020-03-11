@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@sms-test/backend",
   "version": "0.1.0",
   "description": "Stubbed Backend for SMS Test",
   "main": "server.js",

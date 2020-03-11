@@ -1,0 +1,7 @@
+body {
+  background-image: url("./img/map-bg.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  background-color: #fff;
+}
