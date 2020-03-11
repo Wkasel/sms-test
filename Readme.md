@@ -1,10 +1,12 @@
 # SMS Test
 
-SMS Test mono-repo
+SMS Test
 
 ## Launching the Dev Environment
 
-`docker-compose up`
+`docker-compose up` (incomplete)
+
+- yarn && yarn bootstrap && yarn start
 
 _NOTE: All packages prefixed with `@sms-test`, such as `@sms-test/common`._
 

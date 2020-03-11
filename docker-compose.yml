@@ -11,7 +11,8 @@ services:
     user: node
     volumes:
       - ./packages/backend:/home/node/app
-  wf-client:
+    command: bash -c 'yarn && yarn start'
+  sms-frontend:
     image: node:12
     container_name: sms-frontend
     expose:
@@ -20,9 +21,8 @@ services:
       - "3000:3000"
     volumes:
       - ./packages/frontend:/home/node/app
-    # working_dir: /home/node/app
     command: bash -c 'yarn && yarn start'
-  # wf-nginx:
+  # sms-nginx:
   #   container_name: sms-nginx
   #   restart: always
   #   build:

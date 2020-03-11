@@ -24,8 +24,8 @@
     "prebuild": "git clean -fdx packages -e packages/*/node_modules",
     "prettier": "prettier --write \"./packages/**/*.{js,json,md,yml}\"",
     "sort-pkg": "sort-package-json \"package.json\" \"packages/*/package.json\"",
-    "up": "lerna run start --stream --scope=@sms-test/{frontend,backend} --include-dependencies",
-    "up:dev": "lerna run start --stream --scope=@sms-test/{frontend,backend} --include-dependencies",
+    "start:prod": "lerna run start --stream --scope=@sms-test/{frontend,backend} --include-dependencies",
+    "start": "lerna run start --stream --scope=@sms-test/{frontend,backend} --include-dependencies",
     "dock:up": "docker-compose up"
   },
   "husky": {

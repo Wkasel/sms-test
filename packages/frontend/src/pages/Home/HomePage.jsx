@@ -1,15 +1,15 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
-import { useStyles } from "./HomePageStyles";
-import PhoneInput from "../../components/PhoneInput";
+import { useStyles } from './HomePageStyles';
+import PhoneInput from '../../components/PhoneInput';
 
 const SAVE_PHONENUMBER = gql`
   mutation savePhoneNumber($phonenumber: String!) {
@@ -19,23 +19,27 @@ const SAVE_PHONENUMBER = gql`
   }
 `;
 
-const HomePage = props => {
+const HomePage = (props) => {
   const [savePhoneNumber, phonenumber] = useMutation(SAVE_PHONENUMBER);
 
-  const [phone, setPhone] = React.useState("");
+  const [phone, setPhone] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [validation, setValidation] = React.useState(false);
+  const isValidPhone = (value) =>
+    value.match(
+      /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/gm
+    );
 
-  const isValidPhone = value =>
-    value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
-
-  const onEnterPhone = phonenumber => setPhone(phonenumber);
+  const onEnterPhone = (phonenumber) => {
+    if (isValidPhone(phonenumber)) {
+      setValidation(true);
+      return setPhone(phonenumber);
+    }
+  };
 
   const submitPhone = async () => {
     console.log(`phone number: ${phone}`);
     console.log(typeof phone);
-    // test phone number
-    // ...
-    // if valid submit to Apollo
 
     await savePhoneNumber({ variables: { phonenumber: phone } });
     setSubmitted(true);
@@ -70,6 +74,7 @@ const HomePage = props => {
               className={classes.button}
               startIcon={<CloudDownloadIcon />}
               onClick={submitPhone}
+              disabled={!validation}
             >
               Download
             </Button>
