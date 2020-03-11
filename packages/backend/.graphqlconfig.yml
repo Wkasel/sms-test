@@ -2,8 +2,8 @@ schemaPath: schema.graphql
 extensions:
   endpoints:
     default:
-      url: "https://sms-test.now.sh"
-      subscription: "wss://sms-test.now.sh"
+      url: 'https://sms-test.now.sh'
+      subscription: 'wss://sms-test.now.sh'
     local:
-      url: "http://localhost:${env:PORT}/graphql"
-      subscription: "ws://localhost:${env:PORT}"
+      url: 'http://localhost:${env:PORT}/graphql'
+      subscription: 'ws://localhost:${env:PORT}'

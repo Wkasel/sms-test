@@ -1,7 +1,7 @@
 module.exports = {
-  extends: ["../../configs/.eslintrc"],
+  extends: ['../../configs/.eslintrc'],
   env: {
     node: true,
-    es6: true
-  }
+    es6: true,
+  },
 };

@@ -15,6 +15,34 @@
   "rules": {
     "monorepo/no-internal-import": "error",
     "monorepo/no-relative-import": "error",
-    "prettier/prettier": "error"
+    "no-console": 0,
+    "indent": 0,
+    "comma-dangle": 0,
+    "import/prefer-default-export": 0,
+    "prefer-destructuring": [
+      "warn",
+      {
+        "AssignmentExpression": { "object": false, "array": false },
+        "VariableDeclarator": {
+          "array": false,
+          "object": true
+        }
+      }
+    ],
+
+    "arrow-parens": ["warn", "as-needed"],
+    "arrow-body-style": ["error", "as-needed"],
+    "func-style": ["error", "expression"],
+    "curly": ["error", "all"],
+    "no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true, "allowTernary": true }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": "error",
+    "import/named": "error",
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn"
   }
 }
