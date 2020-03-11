@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require("apollo-server");
 const chalk = require("chalk");
-const PORT = 4000;
+
 const schema = {
   typeDefs: gql`
     type Query {
