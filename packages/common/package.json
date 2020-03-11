@@ -1,0 +1,9 @@
+{
+  "name": "@sms-test/common",
+  "version": "0.1.0",
+  "description": "Common utilities",
+  "main": "index.js",
+  "repository": "https://github.com/wkasel/sms-test",
+  "author": "wkasel <wkasel@gmail.com> (@wkasel)",
+  "license": "MIT"
+}

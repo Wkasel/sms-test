@@ -1,0 +1,6 @@
+old/
+node_modules/
+*/package.json
+package.json
+.next
+.vscode

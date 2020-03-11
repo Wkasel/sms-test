@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "description": "Stubbed Backend for SMS Test",
+  "main": "server.js",
+  "repository": "https://github.com/wkasel/sms-test",
+  "author": "wkasel <wkasel@gmail.com> William Kasel (@wkasel)",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.11.0",
+    "apollo-server-express": "^2.11.0",
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0",
+    "graphql-playground-html": "^1.6.13",
+    "graphql-playground-middleware-express": "^1.7.12",
+    "graphql-tools": "^4.0.7"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "@sms-test/app",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wkasel/sms-test.git"
+  },
+  "license": "MIT",
+  "author": "William Kasel <wkasel@gmail.com> (http://williamkasel.co)",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "clean": "./scripts/cleanup.sh && lerna clean && yarn cache clean",
+    "dev": "concurrently --kill-others --success first \"npm start --prefix ./packages/backend\" \"npm run start --prefix ./packages/frontend\"",
+    "lint": "yarn lint:js && yarn lint:styles",
+    "lint:js": "eslint . --ext .js --ignore-pattern lib --ignore-pattern node_modules --fix",
+    "lint:styles": "stylelint './packages/**/*.js'",
+    "list": "lerna list",
+    "prebuild": "git clean -fdx packages -e packages/*/node_modules",
+    "prettier": "prettier --write \"./packages/**/*.{js,json,md,yml}\"",
+    "sort-pkg": "sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "up": "lerna run start --stream --scope=@sms-test/{frontend,backend} --include-dependencies",
+    "up:dev": "lerna run start --stream --scope=@sms-test/{frontend,backend} --include-dependencies",
+    "dock:up": "docker-compose up"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "packages/**/*.{js,md,yml}": [
+      "prettier --write",
+      "eslint --fix",
+      "sort",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-core": "6.x || ^7.0.0-bridge.0",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-preset-react-app": "^9.1.0",
+    "concurrently": "^5.0.2",
+    "eslint-plugin-import": "^2.19.1",
+    "husky": "^4.2.3",
+    "sort-package-json": "^1.36.0"
+  },
+  "devDependencies": {}
+}
