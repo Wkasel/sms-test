@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require("apollo-server");
 const chalk = require("chalk");
-
+const utils = require("@sms-test/common");
 const schema = {
   typeDefs: gql`
     type Query {
@@ -34,9 +34,9 @@ const app = new ApolloServer({
     ]
   }
 });
-// app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 
 app.listen().then(args => {
+  utils.debug(args);
   console.log("SERVER DEBUG OUTPUT ABOVE ^^");
   console.log(
     `
