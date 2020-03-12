@@ -4,8 +4,6 @@ SMS Test
 
 ## Launching the Dev Environment
 
-`docker-compose up` (incomplete)
-
 - yarn && yarn bootstrap && yarn start
 
 _NOTE: All packages prefixed with `@sms-test`, such as `@sms-test/common`._
@@ -17,6 +15,10 @@ _NOTE: All packages prefixed with `@sms-test`, such as `@sms-test/common`._
 |   └── backend (express api server)
 |   └── common (standard js utilities)
 ```
+
+## Demo
+
+![Animated Example](demo-sms-test.gif)
 
 ## Tools
 
